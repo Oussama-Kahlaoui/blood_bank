@@ -1,26 +1,25 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import HomePage from "./pages/HomePage";
+import DonatePage from "./pages/DonatePage";
+import RequestPage from "./pages/RequestPage";
+import DonorListPage from "./pages/DonorListPage";
+import LoginPage from "./pages/LoginPage";
+import RegisterPage from "./pages/RegisterPage";
 
 function App() {
-  const [donors, setDonors] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:5000/donors")
-      .then(response => setDonors(response.data))
-      .catch(error => console.error("Erreur :", error));
-  }, []);
-
   return (
-    <div className="p-5">
-      <h1 className="text-2xl font-bold">Liste des donneurs</h1>
-      <ul className="mt-3">
-        {donors.map(donor => (
-          <li key={donor.id} className="p-2 bg-gray-100 my-2 rounded">
-            {donor.name} - {donor.blood_type} ({donor.city})
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/donate" element={<DonatePage />} />
+        <Route path="/request" element={<RequestPage />} />
+        <Route path="/donors" element={<DonorListPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+      </Routes>
+    </Router>
   );
 }
 
