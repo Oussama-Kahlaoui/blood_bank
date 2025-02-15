@@ -13,7 +13,7 @@ function Navbar() {
 
         {/* Navigation Buttons */}
         <Box>
-          <Button color="error" component={Link} to="/">Home</Button>
+          {/* <Button color="error" component={Link} to="/">Home</Button> */}
           <Button color="error" component={Link} to="/donate">Donate</Button>
           <Button color="error" component={Link} to="/request">Request</Button>
           <Button color="error" component={Link} to="/donors">Donors</Button>
