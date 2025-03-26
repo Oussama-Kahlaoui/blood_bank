@@ -14,6 +14,17 @@
   margin-bottom: 1rem;
 }
 
+.hero-section h1 i {
+  margin-right: 1rem;
+  animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
 .hero-section p {
   font-size: 1.5rem;
   color: #6c757d;
@@ -32,6 +43,13 @@
   text-decoration: none;
   font-weight: bold;
   transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn i {
+  font-size: 1.2rem;
 }
 
 .btn-primary {
@@ -58,6 +76,14 @@
   text-align: center;
   color: #343a40;
   margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.info-section h2 i {
+  color: #dc3545;
 }
 
 .info-cards {
@@ -74,6 +100,17 @@
   border-radius: 0.5rem;
   text-align: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.info-card:hover {
+  transform: translateY(-5px);
+}
+
+.info-card .icon-large {
+  font-size: 2.5rem;
+  color: #dc3545;
+  margin-bottom: 1rem;
 }
 
 .info-card h3 {
@@ -84,4 +121,18 @@
 .info-card p {
   color: #6c757d;
   line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 1.2rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+  }
 } 
