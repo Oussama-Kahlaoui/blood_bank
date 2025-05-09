@@ -137,3 +137,83 @@
     padding: 1rem;
   }
 } 
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.thank-you-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 60vh;
+  text-align: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.thank-you-card {
+  background-color: #fff3f4;
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(220, 53, 69, 0.3);
+  animation: popIn 0.6s ease-in-out;
+}
+
+.thank-you-card h2 {
+  color: #dc3545;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.thank-you-card p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+.heart-icon {
+  font-size: 3rem;
+  color: #dc3545;
+  animation: pulse 1s infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+

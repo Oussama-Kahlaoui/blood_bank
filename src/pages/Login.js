@@ -26,8 +26,10 @@ const Login = () => {
       const response = await fetch('http://localhost:5000/api/login', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
         },
+        credentials: 'include',
         body: JSON.stringify(credentials)
       });
 
@@ -41,8 +43,14 @@ const Login = () => {
       localStorage.setItem('token', data.token);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.message);
+      setError(err.message || 'Failed to login. Please try again.');
+      console.error('Login error:', err);
     }
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/login';
   };
 
   return (

@@ -7,8 +7,15 @@ require('dotenv').config();
 
 const app = express();
 
+// CORS configuration
+app.use(cors({
+  origin: 'http://localhost:3000',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Database connection
@@ -133,6 +140,20 @@ app.post('/api/inventory', authenticateToken, (req, res) => {
       return res.status(500).json({ message: 'Error updating inventory' });
     }
     res.json({ message: 'Inventory updated successfully' });
+  });
+});
+
+// Add this after your other routes
+
+app.post('/api/donate', (req, res) => {
+  const { fullName, email, phone, bloodType, donationDate, additionalInfo } = req.body;
+
+  const query = 'INSERT INTO blood_inventory (full_name, email, phone, blood_type, donation_date, additional_info) VALUES (?, ?, ?, ?, ?, ?)';
+  db.query(query, [fullName, email, phone, bloodType, donationDate, additionalInfo], (err, result) => {
+    if (err) {
+      return res.status(500).json({ message: 'Error saving donation' });
+    }
+    res.status(201).json({ message: 'Donation saved successfully' });
   });
 });
 
